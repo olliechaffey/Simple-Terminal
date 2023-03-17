@@ -5,6 +5,12 @@ function get_image(url) {
         img.on('error', reject);
     });
 }
+
+function changeColor(id)
+{
+  document.getElementById(id).style.backgroundColor = "red";
+}
+
 $('body').terminal({
     cat: function (width, height) {
         return get_image('https://placekitten.com/' + width +
@@ -30,8 +36,30 @@ $('body').terminal({
     restart: function () {
         location.reload();
     },
-    restart: function () {
-        location.reload();
+    math: function () {
+        return('(option + two numbers):\n' + ' 1. +\n 2. -\n 3. x\n 4. ÷');
+    },
+    1: function (fnum, snum) {
+        return (fnum + snum);
+    },
+    2: function (fnum, snum) {
+        return (fnum - snum);
+    },
+    3: function (fnum, snum) {
+        return (fnum * snum);
+    },
+    4: function (fnum, snum) {
+        return (fnum / snum);
+    },
+    theme: function () {
+        return(`Usage: theme_[arg]
+        Args:
+          - ls: list all themes
+          - set: set a theme
+          - random: set a random theme
+        Example: 
+          theme ls # to list all themes
+          theme set Gruvbox # to set a theme`);
     }
 
 }, {
